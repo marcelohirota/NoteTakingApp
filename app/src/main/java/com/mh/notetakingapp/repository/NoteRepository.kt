@@ -5,9 +5,13 @@ import com.mh.notetakingapp.model.Note
 
 class NoteRepository(private val db: NoteDatabase) {
 
-        suspend fun insert(note: Note) = db.getNoteDao().insertNote(note)
+        suspend fun insertNote(note: Note) = db.getNoteDao().insertNote(note)
 
-        suspend fun delete(note: Note) = db.getNoteDao().deleteNote(note)
+        suspend fun deleteNote(note: Note) = db.getNoteDao().deleteNote(note)
+
+        suspend fun updateNote(note: Note) = db.getNoteDao().updateNote(note)
+
+        fun searchNotes(query: String?) = db.getNoteDao().searchNote(query)
 
         fun getAllNotes() = db.getNoteDao().getAllNotes()
 }
